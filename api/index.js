@@ -16,3 +16,13 @@ app.listen(3000, () => {
 });
 app.use("/api/user", UserRoute);
 app.use("/api/auth", authRouter);
+app.use((err, req, res, nest) => {
+  //this is a middlleware
+  const statusCode = err.statusCode || "500";
+  const message = err.message || "internal server error ";
+  return res.status(statusCode).json({
+    succsess: false,
+    statusCode,
+    message,
+  });
+});
