@@ -6,6 +6,7 @@ import {
   signInFaliure,
   signInStart,
 } from "../redux/user/userSlice.js";
+import Oauth from "../component/Oauth.jsx";
 function SignIn() {
   const [formdata, setformdata] = useState({});
   //   useSelector is a hook provided by react-redux that allows functional components to read values from the Redux store.
@@ -65,6 +66,7 @@ function SignIn() {
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
+        <Oauth />
       </form>
       <div className="flex gap-2 m-5">
         <p className="font-normal">Dont have an accunt ?</p>
