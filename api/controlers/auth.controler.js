@@ -30,7 +30,9 @@ export const signin = async (req, res, next) => {
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
       .json(rest);
-  } catch (err) {}
+  } catch (err) {
+    next(err);
+  }
 };
 //need to understand some part of the function
 export const google = async (req, res, next) => {
@@ -61,7 +63,8 @@ export const google = async (req, res, next) => {
         password: hashedPassword,
         avatar: req.body.photo,
       });
-      newUser.save();
+
+      await newUser.save();
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
       const { password: pass, ...rest } = newUser._doc;
       res

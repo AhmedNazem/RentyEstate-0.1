@@ -69,7 +69,7 @@ function SignIn() {
         <Oauth />
       </form>
       <div className="flex gap-2 m-5">
-        <p className="font-normal">Dont have an accunt ?</p>
+        <p className="font-normal">Dont have an account ?</p>
         <Link to={"/sign-up"}>
           <span className="text-blue-950 hover:bg-cyan-200">Sign Up</span>
         </Link>
