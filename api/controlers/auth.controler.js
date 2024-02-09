@@ -61,7 +61,7 @@ export const google = async (req, res, next) => {
           Math.random().toString(36).slice(-8),
         email: req.body.email,
         password: hashedPassword,
-        avatar: req.body.photo,
+        avatar: req.body.photo, //! undetected bug
       });
 
       await newUser.save();
