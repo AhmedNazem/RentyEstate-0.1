@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import UserRoute from "./routers/user.route.js";
 import authRouter from "./routers/auth.route.js";
 import cookieParser from "cookie-parser";
+import listingRouter from "./routers/listing.route.js";
 dotenv.config();
 mongoose
   .connect(process.env.MONGO)
@@ -18,6 +19,7 @@ app.listen(3000, () => {
 });
 app.use("/api/user", UserRoute);
 app.use("/api/auth", authRouter);
+app.use("/api/listing", listingRouter);
 app.use((err, req, res, next) => {
   //this is a middlleware
   const statusCode = err.statusCode || "500";
