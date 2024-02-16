@@ -45,6 +45,18 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    signOutStart: (state) => {
+      state.loading = true;
+    },
+    signOutSuccess: (state) => {
+      state.currentUser = null;
+      state.error = null;
+      state.loading = false;
+    },
+    signOutFail: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
   },
 });
 
@@ -58,5 +70,8 @@ export const {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFail,
+  signOutFail,
+  signOutSuccess,
+  signOutStart,
 } = userSlice.actions; //not a param its a redux method
 export default userSlice.reducer;
