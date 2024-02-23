@@ -14,7 +14,7 @@ function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
-    imageUrl: [],
+    imageURLs: [],
     name: "",
     discription: "",
     address: "",
@@ -35,7 +35,7 @@ function CreateListing() {
   console.log(formData);
 
   const handleImageSubmit = (e) => {
-    if (files.length > 0 && files.length + formData.imageUrl.length < 7) {
+    if (files.length > 0 && files.length + formData.imageURLs.length < 7) {
       setUploading(true);
       setImageUploadError(false);
       const promises = [];
@@ -48,7 +48,7 @@ function CreateListing() {
         .then((urls) => {
           setFormData({
             ...formData,
-            imageUrl: formData.imageUrl.concat(urls),
+            imageURLs: formData.imageURLs.concat(urls),
           });
           setImageUploadError(false);
           setUploading(false);
@@ -96,7 +96,7 @@ function CreateListing() {
   const handleRemoveImage = (index) => {
     setFormData({
       ...formData, //* it keeps the previos info as it is
-      imageUrl: formData.imageUrl.filter((_, i) => i !== index),
+      imageURLs: formData.imageURLs.filter((_, i) => i !== index),
     });
   };
   const handleChange = (e) => {
@@ -131,7 +131,7 @@ function CreateListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (formData.imageUrl.length < 1)
+      if (formData.imageURLs.length < 1)
         return setError("you must upload at least one image :D");
       if (+formData.regularPrice < +formData.dissacountPrice)
         return setError("Discounted  price  must be lower than Regular price ");
@@ -339,8 +339,8 @@ function CreateListing() {
           <p className="text-red-700 text-sm">
             {imageUploadError && imageUploadError}
           </p>
-          {formData.imageUrl.length > 0 &&
-            formData.imageUrl.map((url, index) => (
+          {formData.imageURLs.length > 0 &&
+            formData.imageURLs.map((url, index) => (
               <div
                 key={url}
                 className="flex justify-between p-3 border items-center "
