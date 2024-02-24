@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import Header from "./component/Header";
 import PrivetRoute from "./component/privetRoute";
 import CreateListing from "./pages/CreateListing";
+import UpdateListings from "./pages/UpdateListings";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,10 @@ function App() {
         <Route element={<PrivetRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/create-listing" element={<CreateListing />} />
+          <Route
+            path="/update-listing/:listingId"
+            element={<UpdateListings />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

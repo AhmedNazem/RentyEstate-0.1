@@ -275,7 +275,9 @@ function Profile() {
                   >
                     Delete
                   </button>
-                  <button className="text-slate-700 uppercase">Edit</button>
+                  <Link to={`/update-listing/${listing._id}`}>
+                    <button className="text-slate-700 uppercase">Edit</button>
+                  </Link>
                 </div>
               </div>
             ))}
