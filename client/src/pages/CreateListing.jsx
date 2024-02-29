@@ -266,7 +266,7 @@ function CreateListing() {
                 onChange={handleChange}
                 value={formData.baths}
                 type="number"
-                id="bathrooms"
+                id="baths"
                 min="1"
                 max="10"
                 required
