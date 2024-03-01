@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react"; //?check
 import SwiperCore from "swiper"; //? check
 import { Navigation } from "swiper/modules"; //? check
@@ -13,6 +14,7 @@ import {
   FaParking,
   FaShare,
 } from "react-icons/fa";
+import Contact from "../component/Contact";
 function Listing() {
   SwiperCore.use([Navigation]);
   const params = useParams();
@@ -20,6 +22,8 @@ function Listing() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [contact, setContact] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -130,7 +134,18 @@ function Listing() {
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
-            {/* contact underdevelopment  */}
+            {currentUser &&
+              listing.userRef !== currentUser._id &&
+              !contact && ( //? so the button will not show for us only for the ones who want to cantact us
+                <button
+                  onClick={() => setContact(true)}
+                  className="bg-green-600 text-white rounded-lg uppercase hover:opacity-95 p-3"
+                >
+                  Contact Landlord
+                </button>
+              )}
+            {/* because it's a function that have a param in Contact.jsx */}
+            {contact && <Contact listing={listing} />}
           </div>
         </>
       )}
