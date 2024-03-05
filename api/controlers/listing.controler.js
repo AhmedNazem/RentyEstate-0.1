@@ -4,21 +4,22 @@ import { errorHandler } from "../utils/error.js";
 //
 export const createListing = async (req, res, next) => {
   try {
-    const listing = await Listing.create(req.body);
+    const listing = await Listing.create(req.body); //? creating list  and taking the data from the body  in jsx file
     return res.status(201).json(listing);
   } catch (error) {
     next(error);
   }
 };
 export const deleteListing = async (req, res, next) => {
-  const listing = await Listing.findById(req.params.id);
+  const listing = await Listing.findById(req.params.id); //? finding the list depending on te id
   if (!listing) {
     return next(errorHandler(404, "listing not found "));
   }
   if (req.user.id !== listing.userRef)
+    //? delete only your own list
     return next(errorHandler(401, "you can only delete your own list"));
   try {
-    await Listing.findByIdAndDelete(req.params.id);
+    await Listing.findByIdAndDelete(req.params.id); //? then delete the list
     res.status(200).json("lsiting has been deleted ");
   } catch (err) {
     next(err);
@@ -35,6 +36,7 @@ export const updateListing = async (req, res, next) => {
   }
   try {
     const updatedListing = await Listing.findByIdAndUpdate(
+      //? updating the list
       req.params.id,
       req.body,
       { new: true }
@@ -58,11 +60,12 @@ export const getListing = async (req, res, next) => {
 //? functionality of the search listing :D
 export const getListings = async (req, res, next) => {
   try {
-    const limit = parseInt(req.query.limit) || 9;
+    const limit = parseInt(req.query.limit) || 9; //? max cards per listings
     const startIndex = parseInt(req.query.startIndex) || 0;
-    let offer = req.query.offer;
+    let offer = req.query.offer; //? the nesseasery values
 
     if (offer === undefined || offer === "false") {
+      //? serround the value of the offer for only the booleans T&F  same proccess for the rest
       offer = { $in: [false, true] };
     }
 
@@ -81,26 +84,29 @@ export const getListings = async (req, res, next) => {
     let type = req.query.type;
 
     if (type === undefined || type === "all") {
+      //? same proccess but here take the string of sale and rent
       type = { $in: ["sale", "rent"] };
     }
 
-    const searchTerm = req.query.searchTerm || "";
+    const searchTerm = req.query.searchTerm || ""; //? create a deafult values of varibles
 
     const sort = req.query.sort || "createdAt";
 
     const order = req.query.order || "desc";
 
     const listings = await Listing.find({
-      name: { $regex: searchTerm, $options: "i" },
+      name: { $regex: searchTerm, $options: "i" }, // ? here  i means the search fauntonality it not senstive for the lower and upper case
       offer,
       furnished,
       parking,
       type,
     })
-      .sort({ [sort]: order })
+      .sort({ [sort]: order }) //? make sorting depending on the ordering asc or desc
       .limit(limit)
       .skip(startIndex);
-
+    //?limit() and .skip() methods are used to control the number of documents returned by a query. They
+    //? are commonly used for pagination, where you retrieve a subset of results at a time,
+    //? displaying only a certain number of records per page
     return res.status(200).json(listings);
   } catch (error) {
     next(error);
