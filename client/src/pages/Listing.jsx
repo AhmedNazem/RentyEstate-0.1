@@ -109,7 +109,7 @@ function Listing() {
               )}
             </div>
             <p className="text-slate-900">
-              <span className="font-semibold text-black">Description - </span>
+              <span className=" font-semibold text-black">Description - </span>
               {listing.discription}
             </p>
             <ul className="text-slate-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">

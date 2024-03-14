@@ -155,6 +155,9 @@ function Profile() {
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7 "> Profile</h1>
+      <p className="text-center text-xl text-cyan-600">
+        You can update your information from any of the fields below{" "}
+      </p>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <input
           type="file"
@@ -237,7 +240,10 @@ function Profile() {
       <p className="text-cyan-500 mt-5">
         {updateSuccess ? "User updated successfully" : ""}
       </p>
-      <button onClick={handleShowListings} className="text-slate-700 w-full">
+      <button
+        onClick={handleShowListings}
+        className="text-cyan-500 hover:underline font-bold text-xl w-full"
+      >
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
@@ -246,7 +252,7 @@ function Profile() {
       {userListings &&
         userListings.length > 0 && ( //*if it exist and more than 0
           <div className="">
-            <h1 className="text-center my-7 text-2xl font-semibold">
+            <h1 className="text-center my-7 text-2xl text-cyan-600 font-bold">
               {" "}
               Your Listings
             </h1>
