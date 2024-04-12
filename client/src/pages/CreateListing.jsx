@@ -26,6 +26,7 @@ function CreateListing() {
     offer: false,
     parking: false,
     furnished: false,
+    //? i have to add phone number here
   });
 
   const [imageUploadError, setImageUploadError] = useState(false);

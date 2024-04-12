@@ -52,17 +52,16 @@ function Home() {
         <h1 className="text-green-700 font-bold text-3xl lg:text-6xl ">
           Find your next <span className="text-green-500">perfect</span>
           <br />
-          place with Rentey
+          place with AQAR
         </h1>
         <div className="text-slate-600 text-xs sm:text-sm ">
-          RenteyEstate is the best place to find your next perfect place to
-          live.
+          AQAR is the best place to find your next perfect place to live.
         </div>
         <Link
           to={"/search"}
           className="text-xs sm:text-sm text-cyan-700 font-semibold hover:underline"
         >
-          Start now with Rentey...
+          Start now with AQAR...
         </Link>
       </div>
       {/* swiper */}

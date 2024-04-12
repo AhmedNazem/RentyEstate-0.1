@@ -3,15 +3,14 @@ function About() {
     <div className="py-20 px-4 max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold mb-4 text-slate-800 flex flex-wrap">
         <span className="mr-2">About</span>
-        <span className="text-green-500">Rentey</span>
-        <span className="text-green-700">Estate</span>
+        <span className="text-green-500">AQ</span>
+        <span className="text-green-700">AR</span>
       </h1>
       <p className="mb-4 text-slate-700">
-        RenteyEstate is a leading real estate agency that specializes in helping
-        clients buy, sell, and rent properties in the most desirable
-        neighborhoods. Our team of experienced agents is dedicated to providing
-        exceptional service and making the buying and selling process as smooth
-        as possible.
+        AQAR is a leading real estate agency that specializes in helping clients
+        buy, sell, and rent properties in the most desirable neighborhoods. Our
+        team of experienced agents is dedicated to providing exceptional service
+        and making the buying and selling process as smooth as possible.
       </p>
       <p className="mb-4 text-slate-700">
         Our mission is to help our clients achieve their real estate goals by
