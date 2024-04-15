@@ -30,7 +30,6 @@ app.get("*", (req, res) => {
 
 //* creating a moddleware
 app.use((err, req, res, next) => {
-  //this is a middlleware
   const statusCode = err.statusCode || "500";
   const message = err.message || "internal server error ";
   return res.status(statusCode).json({
